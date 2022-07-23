@@ -11,7 +11,7 @@ using PatikaHomework2.Data.Context;
 
 namespace PatikaHomework2.Data.Migrations
 {
-    [DbContext(typeof(PgContext))]
+    [DbContext(typeof(EfContext))]
     [Migration("20220721204040_createDatabase")]
     partial class createDatabase
     {

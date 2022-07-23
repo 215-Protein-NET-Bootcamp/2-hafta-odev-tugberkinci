@@ -8,10 +8,10 @@ namespace PatikaHomework2.Service.IServices
 {
     public interface IGenericService<T>  where T : class
     {
-        IEnumerable<T> GetAll();
-        T GetById(int id);
-        T Add(string name);
-        T Update(string name);
-        T Delete(string name);
+        Task<IEnumerable<T>> GetAll();
+        Task<T> GetById(int id);
+        Task<T> Add(string name);
+        Task<T> Update(string name);
+        Task<T> Delete(int id);
     }
 }

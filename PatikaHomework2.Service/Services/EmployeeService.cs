@@ -1,4 +1,6 @@
-﻿using PatikaHomework2.Dto.Dto;
+﻿using Microsoft.EntityFrameworkCore;
+using PatikaHomework2.Data.Context;
+using PatikaHomework2.Data.Model;
 using PatikaHomework2.Service.IServices;
 using System;
 using System.Collections.Generic;
@@ -10,29 +12,39 @@ namespace PatikaHomework2.Service.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        public Employee Add(string name)
+        private readonly EfContext _EfContext;
+
+        public EmployeeService(EfContext EfContext)
+        {
+            _EfContext = EfContext;
+        }
+
+        public Task<Employee> Add(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Employee Delete(string name)
+        public async Task<Employee> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Employee> GetAll()
+        public async Task<Employee> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Employee GetById(int id)
+        public async Task<Employee> Update(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Employee Update(string name)
+        public async Task<IEnumerable<Employee>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _EfContext.Set<Employee>().AsNoTracking().ToListAsync(); 
+           
         }
+
+
     }
 }

@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace PatikaHomework2.Dto.Dto
 {
-    public class Folder
+    public  class Employee
     {
-        [Key]
-        public int Id { get; set; }
+      
 
-        [ForeignKey("EmployeeId")]
-        public int EmployeeId { get; set; }
+        [Required]
+        [MaxLength(20)]
+        public string Name { get; set; }
 
-        [MaxLength(5)]
-        public string? AccessType { get; set; }
+        [ForeignKey("DepartmentId")]
+        public int DepartmentId { get; set; }
 
         //nav
-        public ICollection<Employee> Employee { get; set; }
+        public ICollection<DepartmentDto> Department { get; set; }
     }
 }

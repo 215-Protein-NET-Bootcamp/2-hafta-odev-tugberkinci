@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PatikaHomework2.Dto.Dto;
+using PatikaHomework2.Data.Model;
 
 namespace PatikaHomework2.Data.Context;
 
-    public class PgContext : DbContext
+    public class EfContext : DbContext
     {
-        public PgContext(DbContextOptions<PgContext> options) : base(options)
+        public EfContext(DbContextOptions<EfContext> options) : base(options)
         {
 
         }

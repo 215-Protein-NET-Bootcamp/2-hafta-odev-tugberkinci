@@ -6,21 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatikaHomework2.Dto.Dto
+namespace PatikaHomework2.Data.Model
 {
-    public  class Employee
+    public class Department
     {
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(20)]
-        public string Name { get; set; }
+        [MaxLength(10)]
+        public string DeptName { get; set; }
 
-        [ForeignKey("DepartmentId")]
-        public int DepartmentId { get; set; }
+        [ForeignKey("CountryId")]
+        public int CountryId { get; set; }
 
         //nav
-        public ICollection<Department> Department { get; set; }
+
+        public ICollection<Country> Country { get; set; }
     }
 }

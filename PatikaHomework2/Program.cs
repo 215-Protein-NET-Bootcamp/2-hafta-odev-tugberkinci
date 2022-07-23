@@ -8,6 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//ef
+
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+//Dapper
+builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -15,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //add db context
-builder.Services.AddDbContext<PgContext>(k=> 
+builder.Services.AddDbContext<EfContext>(k=> 
 k.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSqlConnection"))
 );
 

@@ -1,49 +1,60 @@
-﻿using PatikaHomework2.Data.Context;
-using PatikaHomework2.Dto.Dto;
+﻿using Dapper;
+using PatikaHomework2.Data.Context;
+using PatikaHomework2.Data.Model;
 using PatikaHomework2.Service.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PatikaHomework2.Service.Services
 {
     public class DepartmentService : IDepartmentService
     {
-        private readonly PgContext _pgContext;
 
-        public DepartmentService(PgContext pgContext)
+        private readonly DapperContext dapperDbContext;
+
+        public DepartmentService(DapperContext dapperDbContext) : base()
         {
-            _pgContext = pgContext;
+            this.dapperDbContext = dapperDbContext;
         }
 
+        public async Task<IEnumerable<Department>> GetAll()
+        {
 
-        public Department Add(string name)
+            var sql = "SELECT * FROM department";
+            using (var connection = dapperDbContext.CreateConnection())
+            {
+                connection.Open();
+                var result = await connection.QueryAsync<Department>(sql);
+                return result;
+            }
+            
+        }
+
+        public async Task<Department> GetById(int id)
+        {
+            var query = "SELECT * FROM department WHERE Id = @Id";
+            using (var connection = dapperDbContext.CreateConnection())
+            {
+                connection.Open();
+                var result = await connection.QueryFirstAsync<Department>(query, new { id });
+                return result;
+            }
+        }
+
+        public async Task<Department> Add(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Department Delete(string name)
+        public async Task<Department> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Department> GetAll()
-        {
-
-            return _pgContext.department.ToList();
-                throw new NotImplementedException();
-        }
-
-        public Department GetById(int id)
+     
+        public async Task<Department> Update(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Department Update(string name)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

@@ -17,7 +17,7 @@ namespace PatikaHomework2.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(_departmentService.GetAll());
+            return Ok(_departmentService.GetAll().Result);
         }
 
     }

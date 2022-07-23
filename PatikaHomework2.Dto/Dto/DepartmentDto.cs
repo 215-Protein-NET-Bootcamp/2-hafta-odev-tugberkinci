@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace PatikaHomework2.Dto.Dto
 {
-    public class Department
+    public class DepartmentDto
     {
-        [Key]
-        public int Id { get; set; }
+       
 
         [MaxLength(10)]
         public string DeptName { get; set; }
@@ -21,6 +20,6 @@ namespace PatikaHomework2.Dto.Dto
 
         //nav
 
-        public ICollection<Country> Country { get; set; }
+        public ICollection<CountryDto> Country { get; set; }
     }
 }

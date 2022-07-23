@@ -1,4 +1,5 @@
-﻿using PatikaHomework2.Dto.Dto;
+﻿
+using PatikaHomework2.Data.Model;
 using PatikaHomework2.Service.IServices;
 using System;
 using System.Collections.Generic;
@@ -10,27 +11,28 @@ namespace PatikaHomework2.Service.Services
 {
     public class CountryService : ICountryService
     {
-        public Country Add(string name)
+        public async Task<Country> Add(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Country Delete(string name)
+        public async Task< Country> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Country> GetAll()
+
+        public async Task<Country> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Country GetById(int id)
+        public async Task<Country> Update(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Country Update(string name)
+        Task<IEnumerable<Country>> IGenericService<Country>.GetAll()
         {
             throw new NotImplementedException();
         }

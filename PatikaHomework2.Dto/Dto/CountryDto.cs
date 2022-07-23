@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace PatikaHomework2.Dto.Dto
 {
-    public class Country
+    public class CountryDto
     {
-        [Key]
-        public int Id { get; set; }
+    
 
         [MaxLength(30)]
         public string CountryName { get; set; }

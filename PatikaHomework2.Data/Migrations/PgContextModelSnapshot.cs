@@ -10,7 +10,7 @@ using PatikaHomework2.Data.Context;
 
 namespace PatikaHomework2.Data.Migrations
 {
-    [DbContext(typeof(PgContext))]
+    [DbContext(typeof(EfContext))]
     partial class PgContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
