@@ -1,6 +1,8 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PatikaHomework2.Data.Context;
 using PatikaHomework2.Service.IServices;
+using PatikaHomework2.Service.Mapper;
 using PatikaHomework2.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,10 +14,20 @@ builder.Services.AddControllers();
 //ef
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IFolderService, FolderService>();
 
 //Dapper
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<ICountryService, CountryService>();
+
+//mapper
+var mapperConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new MappingProfile());
+});
+builder.Services.AddSingleton(mapperConfig.CreateMapper());
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

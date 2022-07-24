@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace PatikaHomework2.Dto.Dto
 {
@@ -20,6 +17,6 @@ namespace PatikaHomework2.Dto.Dto
 
         //nav
 
-        public ICollection<CountryDto> Country { get; set; }
+        //public ICollection<Country> Country { get; set; }
     }
 }
