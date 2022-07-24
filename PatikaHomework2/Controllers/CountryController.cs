@@ -22,7 +22,17 @@ namespace PatikaHomework2.Controllers
         }
 
 
+        
+
+
+
+        /// <summary>
+        /// Get all
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Retuns data </response>
         [HttpGet]
+        [ProducesResponseType(typeof(GenericResponse<IEnumerable<Country>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
             var country = await Task.Run(() => _countryService.GetAll().Result);
@@ -34,7 +44,17 @@ namespace PatikaHomework2.Controllers
             return Ok(response);
         }
 
+
+        /// <summary>
+        /// Get by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Retuns data </response>
+        /// <response code="404">Returns error</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
             var country = await Task.Run(() => _countryService.GetById(id));
@@ -53,7 +73,20 @@ namespace PatikaHomework2.Controllers
             return Ok(response);
         }
 
+
+
+        /// <summary>
+        /// post
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <response code="201">Retuns data </response>
+        /// <response code="404">Returns error</response>
+        /// <response code="400">Returns error</response>
         [HttpPost]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Post(CountryDto model)
         {
             GenericResponse<Country> response = new GenericResponse<Country>();
@@ -75,7 +108,20 @@ namespace PatikaHomework2.Controllers
    
         }
 
+
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <response code="200">Retuns data </response>
+        /// <response code="404">Returns error</response>
+        /// <response code="400">Returns error</response>
         [HttpPatch("{id}")]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Patch(int id,CountryDto model)
         {
             GenericResponse<Country> response = new GenericResponse<Country>();
@@ -111,7 +157,20 @@ namespace PatikaHomework2.Controllers
 
         }
 
+
+        /// <summary>
+        /// post
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <response code="201">Retuns data </response>
+        /// <response code="404">Returns error</response>
+        /// <response code="400">Returns error</response>
+
         [HttpPut]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Put(CountryDto model)
         {
             GenericResponse<Country> response = new GenericResponse<Country>();
@@ -133,7 +192,18 @@ namespace PatikaHomework2.Controllers
 
         }
 
+
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Retuns data </response>
+        /// <response code="404">Returns error</response>
         [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GenericResponse<Country>), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
             var country = await Task.Run(() => _countryService.Delete(id));
